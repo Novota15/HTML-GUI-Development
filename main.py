@@ -61,7 +61,9 @@ application = tornado.web.Application([
 ])
 
 def checkSerial():
-    print("periodic check called")
+    i = 0
+    i = i+1
+    return
 
 if __name__ == "__main__":
     #tell tornado to run checkSerial every 10ms
