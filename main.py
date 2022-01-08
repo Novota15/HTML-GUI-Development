@@ -65,6 +65,7 @@ class CommandHandler(BaseHandler):
             self.write( json.dumps(status) )
 
         elif op == "sample once":
+            print("sample once called")
             sample_data()
         #operation was not one of the ones that we know how to handle
         else:
