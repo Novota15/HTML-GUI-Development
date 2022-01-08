@@ -13,15 +13,14 @@ function serverResponded( data ) {
     
     // check the server status, and report it on the screen
     if (data.server === true) {
-        $('#status .value').html("OK");
         document.getElementById("status").innerHTML = "OK";
     }
     else {
-        $('#status .value').html("NOT OK");
+        document.getElementById("status").innerHTML = "NOT OK";
     }
     
     // add the last serial to the div on the screen
-    $('#serial .value').html(data.mostRecentSerial);
+    document.getElementById("serial").innerHTML = data.mostRecentSerial;
 }
 
 $(document).ready( function() {
