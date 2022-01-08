@@ -30,7 +30,7 @@ class CommandHandler(tornado.web.RequestHandler):
         self.handleRequest()
     
     # handle both GET and POST requests with the same function
-    def handleRequest( self ):
+    def handleRequest(self):
         # is op to decide what kind of command is being sent
         op = self.get_argument('op',None)
         
@@ -59,6 +59,9 @@ application = tornado.web.Application([
     (r"/(.*\.js)", tornado.web.StaticFileHandler,{"path": cwd }),
     (r"/(.*\.css)", tornado.web.StaticFileHandler,{"path": cwd }),
 ])
+
+def checkSerial():
+    print("periodic check called")
 
 if __name__ == "__main__":
     #tell tornado to run checkSerial every 10ms
