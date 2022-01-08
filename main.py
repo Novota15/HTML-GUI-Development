@@ -8,6 +8,13 @@ import tornado.web
 import os
 import json
 
+# my libraries
+import db
+from psuedoSensor import PseudoSensor
+
+# init database
+session = db.init_session()
+
 tornadoPort = 8888
 cwd = os.getcwd() # used by static file server
 
@@ -56,7 +63,9 @@ class CommandHandler(BaseHandler):
             status = {"server": True, "mostRecentSerial": "success" }
             #turn it to JSON and send it to the browser
             self.write( json.dumps(status) )
-        
+            
+        if op == "sample once":
+            sample_data()
         #operation was not one of the ones that we know how to handle
         else:
             print(op)
@@ -79,6 +88,20 @@ application = tornado.web.Application([
 def checkSerial():
     i = 0
     i = i+1
+    return
+
+# get sample of data from pseudo sensor
+def sample_data():
+    ps = PseudoSensor()
+    h,temp_f = ps.generate_values()
+    temp_c = (temp_f - 32) * 5.0/9.0
+    now = datetime.now()
+    db.add_temp(session, temp_f, temp_c, now)
+    db.add_humidity(session, h, now)
+
+def single_sample():
+    h,t = sample_data()
+    print('sample', 'temp:', t, 'humidity:', h)
     return
 
 if __name__ == "__main__":
