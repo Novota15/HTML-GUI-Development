@@ -34,7 +34,7 @@ class IndexHandler(BaseHandler):
         self.render('index.html')
 
 # handle commands sent from the web browser
-class CommandHandler(tornado.web.RequestHandler):
+class CommandHandler(BaseHandler):
     #both GET and POST requests have the same responses
     def get(self, url = '/'):
         print("get")
