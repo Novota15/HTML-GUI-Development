@@ -12,22 +12,22 @@ function serverResponded( data ) {
     console.log( data );
     
     // check the server status, and report it on the screen
-    if ( data.server === true ) {
-        $('#status .value').html("OK");
+    if (data.server === true) {
+        $('#status.value').html("OK");
     }
     else {
-        $('#status .value').html("NOT OK");
+        $('#status.value').html("NOT OK");
     }
     
     // add the last serial to the div on the screen
-    $('#serial .value').html( data.mostRecentSerial );
+    $('#serial.value').html(data.mostRecentSerial);
 }
 
 $(document).ready( function() {
     /* handle the click event on the clickme */
     $('#clickme').click( function() {
         params = { op: "checkup" };
-        $.getJSON( 'http://localhost:8888/com' , params, serverResponded );
+        $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
 });
 </script>
