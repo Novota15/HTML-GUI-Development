@@ -34,12 +34,13 @@ $(document).ready( function() {
         params = { op: "sample once" };
         $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
+
 });
 
 </script>
 </head>
 <body>
-    <div id="clickme" style="cursor: pointer;">CLICK ME</div>
+    <button id="clickme" type="button">click me</button>
     <div id="sample once" style="cursor: pointer;">SAMPLE ONCE</div>
     
     <div id="status">
