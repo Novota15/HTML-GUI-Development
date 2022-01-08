@@ -25,7 +25,7 @@ class BaseHandler(tornado.web.RequestHandler):
         self.finish()
 
 # send the index file
-class IndexHandler(tornado.web.RequestHandler):
+class IndexHandler(BaseHandler):
     def get(self, url = '/'):
         self.render('index.html')
     def post(self, url ='/'):
