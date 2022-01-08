@@ -30,7 +30,7 @@ $(document).ready( function() {
         $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
 
-    $('#sample once').click( function() {
+    $('#sample_once').click( function() {
         params = { op: "sample once" };
         $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
@@ -41,7 +41,7 @@ $(document).ready( function() {
 </head>
 <body>
     <button id="clickme" type="button">click me</button>
-    <div id="sample once" style="cursor: pointer;">SAMPLE ONCE</div>
+    <div id="sample_once" style="cursor: pointer;">SAMPLE ONCE</div>
     
     <div id="status">
         Server Status: <span class="value">?</span>
