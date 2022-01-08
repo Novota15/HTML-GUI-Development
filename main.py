@@ -67,6 +67,11 @@ class CommandHandler(BaseHandler):
         elif op == "sample once":
             print("sample once called")
             sample_data()
+            #make a dictionary
+            status = {"server": True, "mostRecentSerial": "success" }
+            #turn it to JSON and send it to the browser
+            self.write( json.dumps(status) )
+            
         #operation was not one of the ones that we know how to handle
         else:
             print(op)
