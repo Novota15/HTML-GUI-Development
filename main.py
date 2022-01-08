@@ -19,6 +19,11 @@ class BaseHandler(tornado.web.RequestHandler):
         self.set_header("Access-Control-Allow-Headers", "x-requested-with")
         self.set_header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS')
 
+    def options(self):
+        # no body
+        self.set_status(204)
+        self.finish()
+
 # send the index file
 class IndexHandler(tornado.web.RequestHandler):
     def get(self, url = '/'):
