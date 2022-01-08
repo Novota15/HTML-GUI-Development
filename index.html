@@ -9,11 +9,12 @@ function serverResponded( data ) {
     log the event data, so you can see what's going on.
     Shows up in the console on your browser. (Chrome: Tools > Developer Tools > Console)
     */
-    console.log( data );
+    console.log(data);
     
     // check the server status, and report it on the screen
     if (data.server === true) {
         $('#status .value').html("OK");
+        document.getElementById("status").innerHTML = "OK";
     }
     else {
         $('#status .value').html("NOT OK");
