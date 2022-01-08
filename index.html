@@ -29,15 +29,13 @@ $(document).ready( function() {
         params = { op: "checkup" };
         $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
-});
 
-$(document).ready( function() {
-    /* handle the click event on the clickme */
     $('#sample once').click( function() {
         params = { op: "sample once" };
         $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
 });
+
 </script>
 </head>
 <body>
