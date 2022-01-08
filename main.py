@@ -63,8 +63,8 @@ class CommandHandler(BaseHandler):
             status = {"server": True, "mostRecentSerial": "success" }
             #turn it to JSON and send it to the browser
             self.write( json.dumps(status) )
-            
-        if op == "sample once":
+
+        elif op == "sample once":
             sample_data()
         #operation was not one of the ones that we know how to handle
         else:
