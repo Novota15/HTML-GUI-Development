@@ -188,6 +188,7 @@ def sample_data():
     humid_min_alarm = False
     humid_max_alarm = False
     
+    # set alarms
     if temp_f > temp_max_limit:
         temp_max_alarm = True
     elif temp_f < temp_min_limit:
@@ -196,6 +197,7 @@ def sample_data():
         humid_max_alarm = True
     elif h < humid_min_limit:
         humid_min_alarm = True
+        
     return h, temp_f
 
 def single_sample():
