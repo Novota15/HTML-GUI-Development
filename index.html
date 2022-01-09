@@ -60,6 +60,11 @@ $(document).ready( function() {
         $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
 
+    $('#create_error').click( function() {
+        params = { op: "create error" };
+        $.getJSON('http://localhost:8888/com', params, serverResponded);
+    });
+
     $('#stop_server').click( function() {
         params = { op: "stop server" };
         $.getJSON('http://localhost:8888/com', params, serverResponded);
@@ -168,6 +173,7 @@ $(document).ready( function() {
 </head>
 <body>
     <button id="clickme" class="button button1">Get Server Status</button> 
+    <button id="create_error" class="button button3">Stop Server</button>
     <button id="stop_server" class="button button3">Stop Server</button>
     <p id="status">Status ?</p>
 
