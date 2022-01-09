@@ -47,6 +47,11 @@ $(document).ready( function() {
         $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
 
+    $('#calc_metrics').click( function() {
+        params = { op: "calc metrics" };
+        $.getJSON('http://localhost:8888/com', params, serverResponded);
+    });
+
 });
 
 </script>
@@ -111,7 +116,8 @@ $(document).ready( function() {
     <p id="status">Status ?</p>
     <div id="button_row">
     <button id="sample_once" class="button button2">Sample Once</button>
-    <button id="sample_multi" class="button button3">Sample 10 Times</button>
+    <button id="sample_multi" class="button button1">Sample 10 Times</button>
+    <button id="calc_metrics" class="button button2">Calculate Metrics</button>
     </div>
 
     <div>
