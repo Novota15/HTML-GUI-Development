@@ -12,7 +12,7 @@ function serverResponded( data ) {
     console.log(data);
     
     // check the server status, and report it on the screen
-    if (data.server.length > 0) {
+    if (typeof(data.server) !== 'undefined') {
         if (data.server === true) {
         document.getElementById("status").innerHTML = "Server: OK";
         }
@@ -21,7 +21,7 @@ function serverResponded( data ) {
         }
     }
 
-    if (data.current_temp.length > 0) {
+    if (typeof(data.current_temp.length) !== 'undefined') {
         document.getElementById("current_temp").innerHTML = data.current_temp;
         document.getElementById("current_humidity").innerHTML = data.current_humidity;
     }  
