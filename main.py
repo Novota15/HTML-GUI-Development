@@ -139,8 +139,13 @@ class CommandHandler(BaseHandler):
             humid_min_limit = float(value)
             print("min humidity value:", value)
 
+        elif op == "create error"
+            status = {}
+            self.write( json.dumps(status) )
+
         elif op == "stop server":
             stop_tornado()
+
 
         #operation was not one of the ones that we know how to handle
         else:
@@ -197,7 +202,7 @@ def sample_data():
         humid_max_alarm = True
     elif h < humid_min_limit:
         humid_min_alarm = True
-        
+
     return h, temp_f
 
 def single_sample():
