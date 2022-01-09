@@ -18,6 +18,9 @@ session = db.init_session()
 tornadoPort = 8888
 cwd = os.getcwd() # used by static file server
 
+current_temp = 0.0
+current_humidity = 0.0
+
 # allow cross-origin requests
 class BaseHandler(tornado.web.RequestHandler):
     def set_default_headers(self):
@@ -68,7 +71,16 @@ class CommandHandler(BaseHandler):
             print("sample once called")
             single_sample()
             #make a dictionary
-            status = {"server": True, "mostRecentSerial": "success" }
+            global current_temp, current_humidity
+            status = {"current_temp": current_humidity, "current_humidity": current_humidity }
+            #turn it to JSON and send it to the browser
+            self.write( json.dumps(status) )
+
+        elif op == "sample multi":
+            print("multi sample called")
+            multi_sample()
+            global current_temp, current_humidity
+            status = {"current_temp": current_humidity, "current_humidity": current_humidity }
             #turn it to JSON and send it to the browser
             self.write( json.dumps(status) )
 
@@ -93,10 +105,6 @@ application = tornado.web.Application([
 
 # END OF WEB APP FUNCTIONS
 
-def checkSerial():
-    i = 0
-    i = i+1
-    return
 
 # get sample of data from pseudo sensor
 def sample_data():
@@ -110,6 +118,9 @@ def sample_data():
 
 def single_sample():
     h,t = sample_data()
+    global current_temp, current_humidity
+    current_temp = t
+    current_humidity = h
     print('sample', 'temp:', t, 'humidity:', h)
     return
 
@@ -118,15 +129,14 @@ def multi_sample():
     print("take 10 samples:")
     for i in range(max):
         h,t = sample_data()
+        global current_temp, current_humidity
+        current_temp = t
+        current_humidity = h
         print('sample', i+1, 'temp:', t, 'humidity:', h)
         time.sleep(1)
     return
 
-if __name__ == "__main__":
-    #tell tornado to run checkSerial every 10ms
-    serial_loop = tornado.ioloop.PeriodicCallback(checkSerial, 10)
-    serial_loop.start()
-    
+if __name__ == "__main__":    
     #start tornado
     application.listen(tornadoPort)
     print("Starting server on port number %i..." % tornadoPort )

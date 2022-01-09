@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Python Tornado Test Page</title>
+<title>Python Tornado UI Page</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 <script>
 function serverResponded( data ) {
@@ -21,6 +21,9 @@ function serverResponded( data ) {
     
     // add the last serial to the div on the screen
     document.getElementById("serial").innerHTML = data.mostRecentSerial;
+
+    document.getElementById("current_temp").innerHTML = data.current_temp;
+    document.getElementById("current_humidity").innerHTML = data.current_humidity;
 }
 
 $(document).ready( function() {
@@ -32,6 +35,11 @@ $(document).ready( function() {
 
     $('#sample_once').click( function() {
         params = { op: "sample once" };
+        $.getJSON('http://localhost:8888/com', params, serverResponded);
+    });
+
+    $('#sample_multi').click( function() {
+        params = { op: "sample multi" };
         $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
 
@@ -74,6 +82,17 @@ $(document).ready( function() {
       background-color: #008CBA;
       color: white;
     }
+
+    .button3 {
+      background-color: white;
+      color: black;
+      border: 2px solid #d30f40;
+    }
+    
+    .button3:hover {
+      background-color: #d30f40;
+      color: white;
+    }
     
 </style>
 
@@ -81,7 +100,21 @@ $(document).ready( function() {
 <body>
     <button id="clickme" class="button button1">Get Server Status</button> <p id="status">Status ?</p>
     <div id="button_row">
-    <button id="sample_once" class="button button2">SAMPLE ONCE</button>
+    <button id="sample_once" class="button button2">Sample Once</button>
+    <button id="sample_multi" class="button button3">Sample 10 Times</button>
+    </div>
+
+    <div>
+        <table>
+            <tr>
+              <th>Current Temp</th>
+              <th>Current Humidity</th>
+            </tr>
+            <tr>
+              <td id="current_temp">?</td>
+              <td id="current_humidity">?</td>
+            </tr>
+          </table>
     </div>
     
     <div id="serial">
