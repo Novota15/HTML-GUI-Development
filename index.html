@@ -76,8 +76,29 @@ $(document).ready( function() {
 
     $('#set_max_temp').click( function() {
         // getting the value
-        var email = $("#myField").val();
-        params = { op: "set max temp", value: email};
+        var max_temp = $("#maxTemp").val();
+        params = { op: "set max temp", value: max_temp};
+        $.getJSON('http://localhost:8888/com', params, serverResponded);
+    });
+
+    $('#set_max_humidity').click( function() {
+        // getting the value
+        var max_humidity = $("#maxHumidity").val();
+        params = { op: "set max humidity", value: max_humidity};
+        $.getJSON('http://localhost:8888/com', params, serverResponded);
+    });
+
+    $('#set_min_temp').click( function() {
+        // getting the value
+        var min_temp = $("#minTemp").val();
+        params = { op: "set min temp", value: min_temp};
+        $.getJSON('http://localhost:8888/com', params, serverResponded);
+    });
+
+    $('#set_min_humidity').click( function() {
+        // getting the value
+        var min_humidity = $("#minHumidity").val();
+        params = { op: "set min humidity", value: min_humidity};
         $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
 
@@ -149,7 +170,10 @@ $(document).ready( function() {
     <button id="calc_metrics" class="button button2">Calculate Metrics</button>
     </div>
     <div>
-      <input id="myField" type="text" name="email"/> <button id="set_max_temp">Set Max Temp</button>
+      <input id="maxTemp" type="text" name="max_temp"/> <button id="set_max_temp">Set Max Temp Limit</button>
+      <input id="maxHumidity" type="text" name="max_humidity"/> <button id="set_max_humidity">Set Max Humidity Limit</button>
+      <input id="minTemp" type="text" name="min_temp"/> <button id="set_min_temp">Set Min Temp Limit</button>
+      <input id="minHumidity" type="text" name="min_humidity"/> <button id="set_min_humidity">Set Min Humidity Limit</button>
     </div>
 
     <div>

@@ -105,7 +105,19 @@ class CommandHandler(BaseHandler):
 
         elif op == "set max temp":
             value = self.get_argument('value', None)
-            print("value:", value)
+            print("max temp value:", value)
+
+        elif op == "set max humidity":
+            value = self.get_argument('value', None)
+            print("max humidity value:", value)
+
+        elif op == "set min temp":
+            value = self.get_argument('value', None)
+            print("min temp value:", value)
+
+        elif op == "set min humidity":
+            value = self.get_argument('value', None)
+            print("min humidity value:", value)
 
         elif op == "stop server":
             stop_tornado()
