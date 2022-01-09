@@ -91,6 +91,8 @@ application = tornado.web.Application([
     (r"/(.*\.css)", tornado.web.StaticFileHandler,{"path": cwd }),
 ])
 
+# END OF WEB APP FUNCTIONS
+
 def checkSerial():
     i = 0
     i = i+1
@@ -104,10 +106,20 @@ def sample_data():
     now = datetime.now()
     db.add_temp(session, temp_f, temp_c, now)
     db.add_humidity(session, h, now)
+    return h, temp_f
 
 def single_sample():
     h,t = sample_data()
     print('sample', 'temp:', t, 'humidity:', h)
+    return
+
+def multi_sample():
+    max = 10
+    print("take 10 samples:")
+    for i in range(max):
+        h,t = sample_data()
+        print('sample', i+1, 'temp:', t, 'humidity:', h)
+        time.sleep(1)
     return
 
 if __name__ == "__main__":
