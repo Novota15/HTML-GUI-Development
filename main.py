@@ -145,7 +145,7 @@ def single_sample():
     print('sample', 'temp:', t, 'humidity:', h)
     return
 
-def calc_metrics(self):
+def calc_metrics():
         temp_list, temp_times = db.get_all_temps(session, "f")
         humid_list, humid_times = db.get_all_humids(session)
         metrics = {}
