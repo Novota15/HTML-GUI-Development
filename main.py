@@ -83,11 +83,11 @@ class CommandHandler(BaseHandler):
             for i in range(max):
                 print('sample', i+1)
                 single_sample
-                global current_temp, current_humidity
-                status = {"current_temp": current_humidity, "current_humidity": current_humidity }
-                #turn it to JSON and send it to the browser
-                self.write( json.dumps(status) )
                 time.sleep(1)
+            global current_temp, current_humidity
+            status = {"current_temp": current_humidity, "current_humidity": current_humidity }
+            #turn it to JSON and send it to the browser
+            self.write( json.dumps(status) )
 
         #operation was not one of the ones that we know how to handle
         else:
@@ -134,19 +134,8 @@ def single_sample():
     print('sample', 'temp:', t, 'humidity:', h)
     return
 
-def constant_loop():
-    global current_temp, current_humidity
-    current_temp = db.get_latest_temp
-    current_humidity = db.get_latest_humidity
-    ch = CommandHandler()
-    ch.send_update()
-
 if __name__ == "__main__":    
     #start tornado
-    #tell tornado to run checkSerial every 10ms
-    serial_loop = tornado.ioloop.PeriodicCallback(constant_loop, 100)
-    serial_loop.start()
-
     application.listen(tornadoPort)
     print("Starting server on port number %i..." % tornadoPort )
     print("Open at http://127.0.0.1:%i/index.html" % tornadoPort )
