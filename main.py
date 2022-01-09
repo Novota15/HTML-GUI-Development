@@ -91,7 +91,7 @@ class CommandHandler(BaseHandler):
 
         elif op == "stop server":
             stop_tornado()
-            
+
         #operation was not one of the ones that we know how to handle
         else:
             print(op)
@@ -148,5 +148,4 @@ if __name__ == "__main__":
     #start tornado
     print("Starting server on port number %i..." % tornadoPort )
     print("Open at http://127.0.0.1:%i/index.html" % tornadoPort )
-    tornado.ioloop.IOLoop.instance().start()
     start_tornado()
