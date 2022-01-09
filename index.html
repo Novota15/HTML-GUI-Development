@@ -13,10 +13,10 @@ function serverResponded( data ) {
     
     // check the server status, and report it on the screen
     if (data.server === true) {
-        document.getElementById("status").innerHTML = "OK";
+        document.getElementById("status").innerHTML = "Server: OK";
     }
     else {
-        document.getElementById("status").innerHTML = "NOT OK";
+        document.getElementById("status").innerHTML = "Server: NOT OK";
     }
     
     // add the last serial to the div on the screen
@@ -79,11 +79,9 @@ $(document).ready( function() {
 
 </head>
 <body>
-    <button id="clickme" class="button button1">Get Server Status</button>
+    <button id="clickme" class="button button1">Get Server Status</button> <p id="status">Status ?</p>
+    <div id="button_row">
     <button id="sample_once" class="button button2">SAMPLE ONCE</button>
-    
-    <div id="status">
-        Server Status: <span class="value">?</span>
     </div>
     
     <div id="serial">
