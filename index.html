@@ -74,6 +74,12 @@ $(document).ready( function() {
         $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
 
+    $('#myForm').submit(function() {
+    // Get all the forms elements and their values in one step
+    var params = $(this).serialize();
+    $.getJSON('http://localhost:8888/com', params, serverResponded);
+    });
+
 });
 
 </script>
@@ -142,7 +148,7 @@ $(document).ready( function() {
     <button id="calc_metrics" class="button button2">Calculate Metrics</button>
     </div>
     <div>
-      <form name="form1" action="/" method="get">
+      <form name="myform" action="/" method="get">
         <input type="text" name="input1">
         <input type="submit" value="Submit">
       </form>

@@ -61,12 +61,6 @@ class CommandHandler(BaseHandler):
     
     # handle both GET and POST requests with the same function
     def handleRequest(self):
-        if self.get_argument("input1") is not None:
-            valor = self.get_argument("input1")
-            print("Input:", valor)
-        else:
-            print("No Input")
-
         # is op to decide what kind of command is being sent
         op = self.get_argument('op',None)
         
