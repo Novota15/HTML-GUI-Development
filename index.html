@@ -21,7 +21,7 @@ function serverResponded( data ) {
         }
     }
 
-    if (typeof(data.current_temp.length) !== 'undefined') {
+    if (typeof(data.current_temp) !== 'undefined') {
         document.getElementById("current_temp").innerHTML = data.current_temp;
         document.getElementById("current_humidity").innerHTML = data.current_humidity;
     }  
