@@ -139,7 +139,7 @@ class CommandHandler(BaseHandler):
             humid_min_limit = float(value)
             print("min humidity value:", value)
 
-        elif op == "create error"
+        elif op == "create error":
             status = {}
             self.write( json.dumps(status) )
 
