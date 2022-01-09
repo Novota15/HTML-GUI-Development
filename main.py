@@ -7,9 +7,6 @@ import tornado.ioloop
 import tornado.web
 import os
 import json
-import matplotlib.pyplot as plt
-import base64
-from io import BytesIO
 
 # my libraries
 import db
@@ -59,20 +56,6 @@ class CommandHandler(BaseHandler):
     
     # handle both GET and POST requests with the same function
     def handleRequest(self):
-        
-
-        fig = plt.figure()
-        #plot sth
-
-        tmpfile = BytesIO()
-        fig.savefig(tmpfile, format='png')
-        encoded = base64.b64encode(tmpfile.getvalue()).decode('utf-8')
-
-        html = 'Some html head' + '<img src=\'data:image/png;base64,{}\'>'.format(encoded) + 'Some more html'
-
-        with open('test.html','w') as f:
-            f.write(html)
-
         # is op to decide what kind of command is being sent
         op = self.get_argument('op',None)
         
@@ -106,6 +89,9 @@ class CommandHandler(BaseHandler):
             #turn it to JSON and send it to the browser
             self.write( json.dumps(status) )
 
+        elif op == "stop server":
+            stop_tornado()
+            
         #operation was not one of the ones that we know how to handle
         else:
             print(op)
@@ -151,9 +137,16 @@ def single_sample():
     print('sample', 'temp:', t, 'humidity:', h)
     return
 
+def start_tornado():
+    application.listen(tornadoPort)
+    tornado.ioloop.IOLoop.instance().start()
+
+def stop_tornado():
+    tornado.ioloop.IOLoop.instance().stop()
+
 if __name__ == "__main__":    
     #start tornado
-    application.listen(tornadoPort)
     print("Starting server on port number %i..." % tornadoPort )
     print("Open at http://127.0.0.1:%i/index.html" % tornadoPort )
     tornado.ioloop.IOLoop.instance().start()
+    start_tornado()
