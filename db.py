@@ -99,4 +99,10 @@ def get_all_humids(session):
         humid_list.append(humid.value)
         humid_times.append(humid.time)
     return humid_list, humid_times
+
+def get_latest_temp(session):
+    return session.query(Temperature).order_by(Temperature.id.desc()).first()
+
+def get_latest_humidity(session):
+    return session.query(Humidity).order_by(Humidity.id.desc()).first()
         

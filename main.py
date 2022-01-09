@@ -95,6 +95,11 @@ class CommandHandler(BaseHandler):
             print(self.request)
             raise tornado.web.HTTPError(404, "Missing argument 'op' or not recognized")
 
+    def send_update(self):
+        global current_temp, current_humidity
+        status = {"current_temp": current_humidity, "current_humidity": current_humidity }
+        self.write( json.dumps(status) )
+
 # adds event handlers for commands and file requests
 application = tornado.web.Application([
     #all commands are sent to http://*:port/com
@@ -129,8 +134,18 @@ def single_sample():
     print('sample', 'temp:', t, 'humidity:', h)
     return
 
+def constant_loop():
+    global current_temp, current_humidity
+    current_temp = db.get_latest_temp
+    current_humidity = db.get_latest_humidity
+    CommandHandler.send_update()
+
 if __name__ == "__main__":    
     #start tornado
+    #tell tornado to run checkSerial every 10ms
+    serial_loop = tornado.ioloop.PeriodicCallback(constant_loop, 100)
+    serial_loop.start()
+
     application.listen(tornadoPort)
     print("Starting server on port number %i..." % tornadoPort )
     print("Open at http://127.0.0.1:%i/index.html" % tornadoPort )
