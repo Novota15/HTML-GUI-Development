@@ -78,11 +78,16 @@ class CommandHandler(BaseHandler):
 
         elif op == "sample multi":
             print("multi sample called")
-            multi_sample()
-            global current_temp, current_humidity
-            status = {"current_temp": current_humidity, "current_humidity": current_humidity }
-            #turn it to JSON and send it to the browser
-            self.write( json.dumps(status) )
+            max = 10
+            print("take 10 samples:")
+            for i in range(max):
+                print('sample', i+1)
+                single_sample
+                global current_temp, current_humidity
+                status = {"current_temp": current_humidity, "current_humidity": current_humidity }
+                #turn it to JSON and send it to the browser
+                self.write( json.dumps(status) )
+                time.sleep(1)
 
         #operation was not one of the ones that we know how to handle
         else:
@@ -122,18 +127,6 @@ def single_sample():
     current_temp = t
     current_humidity = h
     print('sample', 'temp:', t, 'humidity:', h)
-    return
-
-def multi_sample():
-    max = 10
-    print("take 10 samples:")
-    for i in range(max):
-        h,t = sample_data()
-        global current_temp, current_humidity
-        current_temp = t
-        current_humidity = h
-        print('sample', i+1, 'temp:', t, 'humidity:', h)
-        time.sleep(1)
     return
 
 if __name__ == "__main__":    
