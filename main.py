@@ -82,7 +82,7 @@ class CommandHandler(BaseHandler):
             print("take 10 samples:")
             for i in range(max):
                 print('sample', i+1)
-                single_sample
+                single_sample()
                 time.sleep(1)
             global current_temp, current_humidity
             status = {"current_temp": current_humidity, "current_humidity": current_humidity }
