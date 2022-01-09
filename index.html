@@ -74,10 +74,11 @@ $(document).ready( function() {
         $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
 
-    $('#myForm').submit(function() {
-    // Get all the forms elements and their values in one step
-    params = { form1: $(this).serialize() };
-    $.getJSON('http://localhost:8888/com', params, serverResponded);
+    $('#set_max_temp').click( function() {
+        // getting the value
+        var email = $("#myField").val();
+        params = { op: "set max temp", value: email};
+        $.getJSON('http://localhost:8888/com', params, serverResponded);
     });
 
 });
@@ -148,10 +149,7 @@ $(document).ready( function() {
     <button id="calc_metrics" class="button button2">Calculate Metrics</button>
     </div>
     <div>
-      <form name="myForm" id="myForm">
-        <input type="text" name="input1">
-        <input type="submit" value="Submit">
-      </form>
+      <input id="myField" type="text" name="email"/>
     </div>
 
     <div>

@@ -62,10 +62,7 @@ class CommandHandler(BaseHandler):
     # handle both GET and POST requests with the same function
     def handleRequest(self):
         # is op to decide what kind of command is being sent
-        if self.get_argument('form1', None) is not None:
-            print("yay")
-        else:
-            op = self.get_argument('op', None)
+        op = self.get_argument('op', None)
 
         
         #received a "checkup" operation command from the browser:
@@ -105,6 +102,10 @@ class CommandHandler(BaseHandler):
             status = metrics
             #turn it to JSON and send it to the browser
             self.write( json.dumps(status) )
+
+        elif op == "set max temp":
+            value = self.get_argument('value', None)
+            print("value:", value)
 
         elif op == "stop server":
             stop_tornado()
