@@ -12,13 +12,11 @@ function serverResponded( data ) {
     console.log(data);
     
     // check the server status, and report it on the screen
-    if (typeof(data.server) !== 'undefined') {
-        if (data.server === true) {
-        document.getElementById("status").innerHTML = "Server: OK";
-        }
-        else {
-            document.getElementById("status").innerHTML = "Server: NOT OK";
-        }
+    if (data.server === true) {
+    document.getElementById("status").innerHTML = "Server: OK";
+    }
+    else {
+        document.getElementById("status").innerHTML = "Server: NOT OK";
     }
 
     if (typeof(data.current_temp) !== 'undefined') {
