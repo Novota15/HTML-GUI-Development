@@ -20,6 +20,11 @@ cwd = os.getcwd() # used by static file server
 
 current_temp = 0.0
 current_humidity = 0.0
+# alarm limits
+temp_min_limit = 30.0
+temp_max_limit = 80.0
+humid_min_limit = 30.0
+humid_max_limit = 70.0
 
 # allow cross-origin requests
 class BaseHandler(tornado.web.RequestHandler):
@@ -56,6 +61,12 @@ class CommandHandler(BaseHandler):
     
     # handle both GET and POST requests with the same function
     def handleRequest(self):
+        if self.get_argument("input1") is not None:
+            valor = self.get_argument("input1")
+            print("Input:", valor)
+        else:
+            print("No Input")
+
         # is op to decide what kind of command is being sent
         op = self.get_argument('op',None)
         

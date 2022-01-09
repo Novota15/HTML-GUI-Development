@@ -22,6 +22,18 @@ function serverResponded( data ) {
     if (typeof(data.current_temp) !== 'undefined') {
         document.getElementById("current_temp").innerHTML = data.current_temp;
         document.getElementById("current_humidity").innerHTML = data.current_humidity;
+        if (data.max_temp_alert === true) {
+          alert("Max temperature exeeded!");
+        }
+        if (data.max_humidity_alert === true) {
+          alert("Max humidity exceeded!");
+        }
+        if (data.min_temp_alert === true) {
+          alert("Min temperature exceeded!");
+        }
+        if (data.min_humidity_alert === true) {
+          alert("Min humidity exceeded!");
+        }
     } 
     // fill out metrics table if requested
     if (typeof(data.total_samples) !== 'undefined') {
@@ -128,6 +140,12 @@ $(document).ready( function() {
     <button id="sample_once" class="button button2">Sample Once</button>
     <button id="sample_multi" class="button button1">Sample 10 Times</button>
     <button id="calc_metrics" class="button button2">Calculate Metrics</button>
+    </div>
+    <div>
+      <form name="form1" action="/" method="get">
+        <input type="text" name="input1">
+        <input type="submit" value="Submit">
+      </form>
     </div>
 
     <div>
