@@ -89,6 +89,14 @@ class CommandHandler(BaseHandler):
             #turn it to JSON and send it to the browser
             self.write( json.dumps(status) )
 
+        elif op == "calc metrics":
+            print("calc metrics called")
+            metrics = calc_metrics()
+            metrics["server"] = True
+            status = metrics
+            #turn it to JSON and send it to the browser
+            self.write( json.dumps(status) )
+
         elif op == "stop server":
             stop_tornado()
 
@@ -136,6 +144,26 @@ def single_sample():
     current_humidity = h
     print('sample', 'temp:', t, 'humidity:', h)
     return
+
+def calc_metrics(self):
+        temp_list, temp_times = db.get_all_temps(session, "f")
+        humid_list, humid_times = db.get_all_humids(session)
+        metrics = {}
+        # set total samples
+        metrics["total_samples"] = str(len(temp_list))
+        # min temp
+        metrics["min_temp"] = str(min(temp_list))
+        # min humidity
+        metrics["min_humidity"] = str(min(humid_list))
+        # max temp
+        metrics["max_temp"] = str(max(temp_list))
+        # max humidity
+        metrics["max_humidity"] = str(max(humid_list))
+        # avg temp
+        metrics["avg_temp"] = str(sum(temp_list)/len(temp_list))
+        # avg humidity
+        metrics["avg_humidity"] = str(sum(humid_list)/len(humid_list))
+        return metrics
 
 def start_tornado():
     application.listen(tornadoPort)

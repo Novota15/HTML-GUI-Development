@@ -22,7 +22,17 @@ function serverResponded( data ) {
     if (typeof(data.current_temp) !== 'undefined') {
         document.getElementById("current_temp").innerHTML = data.current_temp;
         document.getElementById("current_humidity").innerHTML = data.current_humidity;
-    }  
+    } 
+    // fill out metrics table if requested
+    if (typeof(data.total_samples) !== 'undefined') {
+        document.getElementById("total_samples").innerHTML = data.total_samples;
+        document.getElementById("min_temp").innerHTML = data.min_temp;
+        document.getElementById("min_humidity").innerHTML = data.min_humidity;
+        document.getElementById("max_temp").innerHTML = data.max_temp;
+        document.getElementById("max_humidity").innerHTML = data.max_humidity;
+        document.getElementById("avg_humidity").innerHTML = data.avg_temp;
+        document.getElementById("avg_temp").innerHTML = data.avg_humidity;
+    }
 }
 
 $(document).ready( function() {
@@ -133,5 +143,27 @@ $(document).ready( function() {
           </table>
     </div>
 
-    <div><object data="test.html"> </object></div>
+    <div>
+      <table>
+          <tr>
+            <th>Total Samples</th>
+            <th>Min Temp (F)</th>
+            <th>Min Humidity (%)</th>
+            <th>Max Temp (F)</th>
+            <th>Max Humidity (%)</th>
+            <th>Avg Temp (F)</th>
+            <th>Avg Humidity (%)</th>
+          </tr>
+          <tr>
+            <td id="total_samples">?</td>
+            <td id="min_temp">?</td>
+            <td id="min_humidity">?</td>
+            <td id="max_temp">?</td>
+            <td id="max_humidity">?</td>
+            <td id="avg_temp">?</td>
+            <td id="avg_humidity">?</td>
+          </tr>
+        </table>
+  </div>
+
 </body>
