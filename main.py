@@ -72,7 +72,7 @@ class CommandHandler(BaseHandler):
             single_sample()
             #make a dictionary
             global current_temp, current_humidity
-            status = {"current_temp": current_humidity, "current_humidity": current_humidity }
+            status = {"current_temp": current_temp, "current_humidity": current_humidity }
             #turn it to JSON and send it to the browser
             self.write( json.dumps(status) )
 

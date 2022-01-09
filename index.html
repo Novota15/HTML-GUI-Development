@@ -12,18 +12,19 @@ function serverResponded( data ) {
     console.log(data);
     
     // check the server status, and report it on the screen
-    if (data.server === true) {
+    if (data.server.length > 0) {
+        if (data.server === true) {
         document.getElementById("status").innerHTML = "Server: OK";
+        }
+        else {
+            document.getElementById("status").innerHTML = "Server: NOT OK";
+        }
     }
-    else {
-        document.getElementById("status").innerHTML = "Server: NOT OK";
-    }
-    
-    // add the last serial to the div on the screen
-    document.getElementById("serial").innerHTML = data.mostRecentSerial;
 
-    document.getElementById("current_temp").innerHTML = data.current_temp;
-    document.getElementById("current_humidity").innerHTML = data.current_humidity;
+    if (data.current_temp.length > 0) {
+        document.getElementById("current_temp").innerHTML = data.current_temp;
+        document.getElementById("current_humidity").innerHTML = data.current_humidity;
+    }  
 }
 
 $(document).ready( function() {
@@ -115,9 +116,5 @@ $(document).ready( function() {
               <td id="current_humidity">?</td>
             </tr>
           </table>
-    </div>
-    
-    <div id="serial">
-        Last Serial Input: <span class="value"></span>
     </div>
 </body>
