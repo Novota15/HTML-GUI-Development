@@ -170,58 +170,59 @@ $(document).ready( function() {
     <button id="clickme" class="button button1">Get Server Status</button> 
     <button id="stop_server" class="button button3">Stop Server</button>
     <p id="status">Status ?</p>
+
+    <div>
+      <table>
+          <tr>
+            <th>Current Temp (F)</th>
+            <th>Current Humidity (%)</th>
+          </tr>
+          <tr>
+            <td id="current_temp">?</td>
+            <td id="current_humidity">?</td>
+          </tr>
+        </table>
+  </div>
+
+  <div>
+    <table>
+        <tr>
+          <th>Total Samples</th>
+          <th>Min Temp (F)</th>
+          <th>Min Humidity (%)</th>
+          <th>Max Temp (F)</th>
+          <th>Max Humidity (%)</th>
+          <th>Avg Temp (F)</th>
+          <th>Avg Humidity (%)</th>
+        </tr>
+        <tr>
+          <td id="total_samples">?</td>
+          <td id="min_temp">?</td>
+          <td id="min_humidity">?</td>
+          <td id="max_temp">?</td>
+          <td id="max_humidity">?</td>
+          <td id="avg_temp">?</td>
+          <td id="avg_humidity">?</td>
+        </tr>
+      </table>
+  </div>
+
     <div id="button_row">
     <button id="sample_once" class="button button2">Sample Once</button>
     <button id="sample_multi" class="button button1">Sample 10 Times</button>
     <button id="calc_metrics" class="button button2">Calculate Metrics</button>
     </div>
     <div>
-      <input id="maxTemp" type="text" name="max_temp"/> <button id="set_max_temp">Set Max Temp Limit</button> <p>Current: </p><p id="max_temp_current">?</p>
+      <input id="maxTemp" type="text" name="max_temp"/> <button id="set_max_temp">Set Max Temp Limit</button> <p>Current Max Temp Limit: </p><p id="max_temp_current">?</p>
     </div>
     <div>
-      <input id="maxHumidity" type="text" name="max_humidity"/> <button id="set_max_humidity">Set Max Humidity Limit</button> <p>Current: </p><p id="max_humidity_current">?</p>
+      <input id="maxHumidity" type="text" name="max_humidity"/> <button id="set_max_humidity">Set Max Humidity Limit</button> <p>Current Max Humidity Limit: </p><p id="max_humidity_current">?</p>
     </div>
     <div>
-      <input id="minTemp" type="text" name="min_temp"/> <button id="set_min_temp">Set Min Temp Limit</button> <p>Current: </p><p id="min_temp_current">?</p>
+      <input id="minTemp" type="text" name="min_temp"/> <button id="set_min_temp">Set Min Temp Limit</button> <p>Current Min Temp Limit: </p><p id="min_temp_current">?</p>
     </div>
     <div>
-      <input id="minHumidity" type="text" name="min_humidity"/> <button id="set_min_humidity">Set Min Humidity Limit</button> <p>Current: </p><p id="min_humidity_current">?</p>
+      <input id="minHumidity" type="text" name="min_humidity"/> <button id="set_min_humidity">Set Min Humidity Limit</button> <p>Current Min Humidity Limit: </p><p id="min_humidity_current">?</p>
     </div>
-
-    <div>
-        <table>
-            <tr>
-              <th>Current Temp (F)</th>
-              <th>Current Humidity (%)</th>
-            </tr>
-            <tr>
-              <td id="current_temp">?</td>
-              <td id="current_humidity">?</td>
-            </tr>
-          </table>
-    </div>
-
-    <div>
-      <table>
-          <tr>
-            <th>Total Samples</th>
-            <th>Min Temp (F)</th>
-            <th>Min Humidity (%)</th>
-            <th>Max Temp (F)</th>
-            <th>Max Humidity (%)</th>
-            <th>Avg Temp (F)</th>
-            <th>Avg Humidity (%)</th>
-          </tr>
-          <tr>
-            <td id="total_samples">?</td>
-            <td id="min_temp">?</td>
-            <td id="min_humidity">?</td>
-            <td id="max_temp">?</td>
-            <td id="max_humidity">?</td>
-            <td id="avg_temp">?</td>
-            <td id="avg_humidity">?</td>
-          </tr>
-        </table>
-  </div>
 
 </body>
