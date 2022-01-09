@@ -10,6 +10,10 @@ function serverResponded( data ) {
     Shows up in the console on your browser. (Chrome: Tools > Developer Tools > Console)
     */
     console.log(data);
+
+    $(function(){
+      $("#includedContent").load("test.html"); 
+    });
     
     // check the server status, and report it on the screen
     if (typeof(data.server) !== 'undefined') {
@@ -112,8 +116,8 @@ $(document).ready( function() {
     <div>
         <table>
             <tr>
-              <th>Current Temp</th>
-              <th>Current Humidity</th>
+              <th>Current Temp (F)</th>
+              <th>Current Humidity (%)</th>
             </tr>
             <tr>
               <td id="current_temp">?</td>
@@ -121,4 +125,6 @@ $(document).ready( function() {
             </tr>
           </table>
     </div>
+
+    <div id="includedContent"></div>
 </body>
