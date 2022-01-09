@@ -83,12 +83,11 @@ class CommandHandler(BaseHandler):
             for i in range(max):
                 print('sample', i+1)
                 single_sample()
-                global current_temp, current_humidity
-                status = {"current_temp": current_humidity, "current_humidity": current_humidity }
-                #turn it to JSON and send it to the browser
-                self.write( json.dumps(status) )
                 time.sleep(1)
-            
+            global current_temp, current_humidity
+            status = {"current_temp": current_humidity, "current_humidity": current_humidity }
+            #turn it to JSON and send it to the browser
+            self.write( json.dumps(status) )
 
         #operation was not one of the ones that we know how to handle
         else:
