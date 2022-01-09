@@ -138,7 +138,7 @@ def constant_loop():
     global current_temp, current_humidity
     current_temp = db.get_latest_temp
     current_humidity = db.get_latest_humidity
-    ch = CommandHandler
+    ch = CommandHandler()
     ch.send_update()
 
 if __name__ == "__main__":    
