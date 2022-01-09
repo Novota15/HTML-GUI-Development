@@ -22,8 +22,14 @@ function serverResponded( data ) {
     if (typeof(data.current_temp) !== 'undefined') {
         document.getElementById("current_temp").innerHTML = data.current_temp;
         document.getElementById("current_humidity").innerHTML = data.current_humidity;
+
+        document.getElementById("max_temp_current").innerHTML = data.temp_max_limit;
+        document.getElementById("max_humidity_current").innerHTML = data.humid_max_limit;
+        document.getElementById("min_temp_current").innerHTML = data.temp_min_limit;
+        document.getElementById("min_humidity_current").innerHTML = data.humid_min_limit;
+
         if (data.temp_max_alarm === true) {
-          alert("Max temperature exeeded!");
+          alert("Max temperature exceeded!");
         }
         if (data.humid_max_alarm === true) {
           alert("Max humidity exceeded!");
@@ -170,16 +176,16 @@ $(document).ready( function() {
     <button id="calc_metrics" class="button button2">Calculate Metrics</button>
     </div>
     <div>
-      <input id="maxTemp" type="text" name="max_temp"/> <button id="set_max_temp">Set Max Temp Limit</button>
+      <input id="maxTemp" type="text" name="max_temp"/> <button id="set_max_temp">Set Max Temp Limit</button><p>Current: </p><p id="max_temp_current">?</p>
     </div>
     <div>
-      <input id="maxHumidity" type="text" name="max_humidity"/> <button id="set_max_humidity">Set Max Humidity Limit</button>
+      <input id="maxHumidity" type="text" name="max_humidity"/> <button id="set_max_humidity">Set Max Humidity Limit</button><p>Current: </p><p id="max_humidity_current">?</p>
     </div>
     <div>
-      <input id="minTemp" type="text" name="min_temp"/> <button id="set_min_temp">Set Min Temp Limit</button>
+      <input id="minTemp" type="text" name="min_temp"/> <button id="set_min_temp">Set Min Temp Limit</button><p>Current: </p><p id="min_temp_current">?</p>
     </div>
     <div>
-      <input id="minHumidity" type="text" name="min_humidity"/> <button id="set_min_humidity">Set Min Humidity Limit</button>
+      <input id="minHumidity" type="text" name="min_humidity"/> <button id="set_min_humidity">Set Min Humidity Limit</button><p>Current: </p><p id="min_humidity_current">?</p>
     </div>
 
     <div>

@@ -87,6 +87,8 @@ class CommandHandler(BaseHandler):
             #make a dictionary
             global current_temp, current_humidity
             status = {"server": True, "current_temp": current_temp, "current_humidity": current_humidity,
+                "temp_max_limit": temp_max_limit, "humid_max_limit": humid_max_limit,
+                "temp_min_limit": temp_min_limit, "humid_min_limit": humid_min_limit,
                 "temp_max_alarm": temp_max_alarm, "humid_max_alarm": humid_max_alarm,
                 "temp_min_alarm": temp_min_alarm, "humid_min_alarm": humid_min_alarm}
             #turn it to JSON and send it to the browser
@@ -102,6 +104,8 @@ class CommandHandler(BaseHandler):
                 time.sleep(1)
             global current_temp, current_humidity
             status = {"server": True, "current_temp": current_temp, "current_humidity": current_humidity,
+                "temp_max_limit": temp_max_limit, "humid_max_limit": humid_max_limit,
+                "temp_min_limit": temp_min_limit, "humid_min_limit": humid_min_limit,
                 "temp_max_alarm": temp_max_alarm, "humid_max_alarm": humid_max_alarm,
                 "temp_min_alarm": temp_min_alarm, "humid_min_alarm": humid_min_alarm}
             #turn it to JSON and send it to the browser
