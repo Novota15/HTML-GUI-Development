@@ -73,8 +73,6 @@ class CommandHandler(BaseHandler):
         with open('test.html','w') as f:
             f.write(html)
 
-        self.render('index.html')
-
         # is op to decide what kind of command is being sent
         op = self.get_argument('op',None)
         
